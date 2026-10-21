@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <strong>English</strong> · <a href="README.zh-CN.md">简体中文</a>
+  <strong>English</strong> · <a href="https://github.com/KryptonGao/dsh-compact-lane/blob/main/README.zh-CN.md">简体中文</a>
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-  <a href="artifacts/compact-lane.png"><img src="artifacts/compact-lane.png" width="100%" alt="DSH Compact Lane running inside DeepSeek Harness: a collapsed process row, the final answer, a file-change summary, and the original DSH composer."></a>
+  <a href="https://raw.githubusercontent.com/KryptonGao/dsh-compact-lane/main/artifacts/compact-lane.png"><img src="https://raw.githubusercontent.com/KryptonGao/dsh-compact-lane/main/artifacts/compact-lane.png" width="100%" alt="DSH Compact Lane running inside DeepSeek Harness: a collapsed process row, the final answer, a file-change summary, and the original DSH composer."></a>
 </p>
 
 <p align="center">
@@ -113,7 +113,7 @@ pnpm test -- tests/adapter.test.ts
 pnpm build
 ```
 
-Replace the test path with the affected adapter, integration, lifecycle, or scrolling test. `pnpm test` runs the plugin's full test set. Recorded browser checks and unverified cases are listed in [VALIDATION.md](VALIDATION.md) (Chinese).
+Replace the test path with the affected adapter, integration, lifecycle, or scrolling test. `pnpm test` runs the plugin's full test set. Recorded browser checks and unverified cases are listed in [VALIDATION.md](https://github.com/KryptonGao/dsh-compact-lane/blob/main/VALIDATION.md) (Chinese).
 
 <details>
 <summary>Architecture and style maintenance</summary>
@@ -149,8 +149,8 @@ The reference must contain the `vela-extracted` and `demo-chrome` style blocks. 
 - **Host version:** developed and checked against DSH `0.2.1-rc.2`. Other versions are unverified; the chat-tab compatibility rule is specific to rc.2.
 - **Browser:** requires `:has()`, `color-mix()`, container queries, and `inert`, with no fallback. A narrow desktop content column was checked; full mobile viewports, touch input, and other browsers remain unverified.
 - **Appearance:** the compact view currently uses Vela's light theme and Chinese UI labels. Dark/multiple themes, card mode, fold-position settings, step counts, per-tool timing, and remembered fold state are not implemented. Turn duration is shown only when real timestamps exist.
-- **Integration coverage:** local replay covers streaming, stopping, refresh/reconnect, and scrolling. Real model networking, attachment sending, live subagent navigation, and full plugin hot-unload have not received end-to-end browser validation. See [VALIDATION.md](VALIDATION.md) for the detailed scope.
+- **Integration coverage:** local replay covers streaming, stopping, refresh/reconnect, and scrolling. Real model networking, attachment sending, live subagent navigation, and full plugin hot-unload have not received end-to-end browser validation. See [VALIDATION.md](https://github.com/KryptonGao/dsh-compact-lane/blob/main/VALIDATION.md) for the detailed scope.
 
 ## License
 
-[Apache License 2.0](LICENSE).
+[Apache License 2.0](https://github.com/KryptonGao/dsh-compact-lane/blob/main/LICENSE).

@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <a href="README.md">English</a> · <strong>简体中文</strong>
+  <a href="https://github.com/KryptonGao/dsh-compact-lane/blob/main/README.md">English</a> · <strong>简体中文</strong>
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-  <a href="artifacts/compact-lane.png"><img src="artifacts/compact-lane.png" width="100%" alt="运行在 DeepSeek Harness 中的紧凑对话视图：收起的过程行、最终回答、文件变更统计，以及原版 DSH 输入框。"></a>
+  <a href="https://raw.githubusercontent.com/KryptonGao/dsh-compact-lane/main/artifacts/compact-lane.png"><img src="https://raw.githubusercontent.com/KryptonGao/dsh-compact-lane/main/artifacts/compact-lane.png" width="100%" alt="运行在 DeepSeek Harness 中的紧凑对话视图：收起的过程行、最终回答、文件变更统计，以及原版 DSH 输入框。"></a>
 </p>
 
 <p align="center">
@@ -113,7 +113,7 @@ pnpm test -- tests/adapter.test.ts
 pnpm build
 ```
 
-将测试路径替换为受影响的适配、集成、生命周期或滚动测试。`pnpm test` 可运行本插件的全部测试。已记录的浏览器检查与未验证场景见 [VALIDATION.md](VALIDATION.md)。
+将测试路径替换为受影响的适配、集成、生命周期或滚动测试。`pnpm test` 可运行本插件的全部测试。已记录的浏览器检查与未验证场景见 [VALIDATION.md](https://github.com/KryptonGao/dsh-compact-lane/blob/main/VALIDATION.md)。
 
 <details>
 <summary>架构与样式维护</summary>
@@ -149,8 +149,8 @@ pnpm build
 - **宿主版本**：基于 DSH `0.2.1-rc.2` 开发和检查，其他版本尚未验证；对话标签兼容规则针对 rc.2。
 - **浏览器**：依赖 `:has()`、`color-mix()`、容器查询与 `inert`，没有降级实现。已检查桌面窄内容栏，完整手机视口、触屏与其他浏览器尚未验证。
 - **界面**：当前使用 Vela 浅色主题与中文界面文案。深色或多主题、卡片模式、折叠位置设置、步数、单工具耗时及折叠记忆尚未实现。回合耗时仅在存在真实时间戳时显示。
-- **集成覆盖**：本地回放已检查流式、停止、刷新重连与滚动；真实模型网络、附件发送、真实子代理导航及整个插件的热卸载尚未完成端到端浏览器验证。详细范围见 [VALIDATION.md](VALIDATION.md)。
+- **集成覆盖**：本地回放已检查流式、停止、刷新重连与滚动；真实模型网络、附件发送、真实子代理导航及整个插件的热卸载尚未完成端到端浏览器验证。详细范围见 [VALIDATION.md](https://github.com/KryptonGao/dsh-compact-lane/blob/main/VALIDATION.md)。
 
 ## 许可证
 
-[Apache License 2.0](LICENSE)。
+[Apache License 2.0](https://github.com/KryptonGao/dsh-compact-lane/blob/main/LICENSE)。
