@@ -1,0 +1,5 @@
+# The dsh-compact-lane bundle patch: mounts the compact lane plugin, which
+# replaces the Chat view with a compact transcript.
+- insert:
+    - id: compact-lane
+      name: dsh-compact-lane
