@@ -1,0 +1,97 @@
+/* Host-only integration. No CSS Modules class names or changes to host state. */
+[data-dsh-compact-lane] {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  background: var(--bg-chat);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+}
+[data-dsh-compact-lane] .main-chat-view {
+  min-height: 0;
+  --composer-clearance: calc(var(--dsh-composer-height, 184px) + 36px);
+}
+[data-dsh-compact-lane] .chat-conversation-pane {
+  min-height: 0;
+}
+[data-dsh-compact-lane] .chat-message-surface {
+  flex-shrink: 0;
+}
+[data-dsh-compact-lane] .chat-scroll-area {
+  overflow-anchor: none;
+}
+[data-dsh-compact-lane] .lane-file-badge {
+  display: inline-grid;
+  place-items: center;
+  border-radius: 3px;
+  color: #fff;
+  font: 700 7px/1 var(--font-mono);
+  letter-spacing: -0.02em;
+}
+[data-dsh-compact-lane] .lane-raw-result {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: 12px/1.65 var(--font-mono);
+}
+[data-dsh-compact-lane] .lane-notice,
+[data-dsh-compact-lane] .lane-action-error {
+  font-size: 13px;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+[data-dsh-compact-lane] .lane-action-error {
+  color: var(--danger);
+}
+[data-dsh-compact-lane] .lane-load-older {
+  align-self: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+[data-dsh-compact-lane] .compact-diff-scroll-content {
+  padding: 0;
+}
+[data-dsh-compact-lane] .compact-diff-scroll-shell > .thinking-scroll-viewport {
+  max-height: 320px;
+}
+/* The host Markdown parser is retained; neutralize only its outer typography. */
+[data-dsh-compact-lane] .md-content > div {
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+}
+[data-dsh-compact-lane] .md-content > div > :first-child {
+  margin-top: 0;
+}
+[data-dsh-compact-lane] .md-content > div > :last-child {
+  margin-bottom: 0;
+}
+[data-dsh-compact-lane] .assistant-turn-process-item:empty {
+  display: none;
+}
+[data-dsh-compact-lane] .no-enter {
+  animation: none !important;
+}
+[data-dsh-compact-lane] .lane-file-attachment {
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+[data-dsh-compact-lane] .tool-compact-group.is-single > .tool-collapse,
+[data-dsh-compact-lane]
+  .tool-compact-group.is-single
+  > .tool-collapse
+  > .tool-collapse-inner,
+[data-dsh-compact-lane] .tool-compact-lines.is-single {
+  display: contents;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-dsh-compact-lane] .dot-loader i::after {
+    animation: none;
+    opacity: 0.65;
+  }
+}

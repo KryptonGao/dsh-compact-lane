@@ -1,0 +1,521 @@
+[
+  {
+    "kind": "chunks",
+    "chunks": [
+      {
+        "type": "block-start",
+        "index": 0,
+        "blockType": "reasoning"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "先"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "检"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "查"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "现"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "有"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "工"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "具"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "事"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "件"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "的"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "归"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "属"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "，"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "再"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "确"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "认"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "命"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "令"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "、"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "路"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "径"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "和"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "流"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "式"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "状"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "态"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "。"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "工"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "具"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "执"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "行"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "后"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "会"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "自"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "动"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "收"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "起"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "思"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "考"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "，"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "最"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "终"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "回"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "复"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "保"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "留"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "在"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "过"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "程"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "外"
+      },
+      {
+        "type": "reasoning-delta",
+        "index": 0,
+        "text": "。"
+      },
+      {
+        "type": "block-end",
+        "index": 0,
+        "block": {
+          "type": "reasoning",
+          "text": "先检查现有工具事件的归属，再确认命令、路径和流式状态。工具执行后会自动收起思考，最终回复保留在过程外。"
+        }
+      },
+      {
+        "type": "block-start",
+        "index": 1,
+        "blockType": "tool-call"
+      },
+      {
+        "type": "tool-call-delta",
+        "index": 1,
+        "id": "compact-replay-bash",
+        "name": "bash",
+        "argumentsDelta": "{\"command\": \"pr"
+      },
+      {
+        "type": "tool-call-delta",
+        "index": 1,
+        "id": "compact-replay-bash",
+        "argumentsDelta": "intf \\\"compact replay output\\\\n\\\"\", \"description\": \"\\u672c\\u5730\\u65e0\\u5bc6\\u94a5\\u56de\\u653e\"}"
+      },
+      {
+        "type": "block-end",
+        "index": 1,
+        "block": {
+          "type": "tool-call",
+          "id": "compact-replay-bash",
+          "name": "bash",
+          "arguments": "{\"command\": \"printf \\\"compact replay output\\\\n\\\"\", \"description\": \"\\u672c\\u5730\\u65e0\\u5bc6\\u94a5\\u56de\\u653e\"}"
+        }
+      },
+      {
+        "type": "finish",
+        "reason": {
+          "kind": "tool-calls"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "chunks",
+    "chunks": [
+      {
+        "type": "block-start",
+        "index": 0,
+        "blockType": "text"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "回放完成。命令输出为 `compact "
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "replay output`。\n\n- 验"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "证条目 1：节点保持稳定，消息来自本次工"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "具事件。\n- 验证条目 2：节点保持稳定"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "，消息来自本次工具事件。\n- 验证条目 "
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "3：节点保持稳定，消息来自本次工具事件。"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "\n- 验证条目 4：节点保持稳定，消息来"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "自本次工具事件。\n- 验证条目 5：节点"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "保持稳定，消息来自本次工具事件。\n- 验"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "证条目 6：节点保持稳定，消息来自本次工"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "具事件。\n- 验证条目 7：节点保持稳定"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "，消息来自本次工具事件。\n- 验证条目 "
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "8：节点保持稳定，消息来自本次工具事件。"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "\n- 验证条目 9：节点保持稳定，消息来"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "自本次工具事件。\n- 验证条目 10：节"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "点保持稳定，消息来自本次工具事件。\n- "
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "验证条目 11：节点保持稳定，消息来自本"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "次工具事件。\n- 验证条目 12：节点保"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "持稳定，消息来自本次工具事件。\n- 验证"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "条目 13：节点保持稳定，消息来自本次工"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "具事件。\n- 验证条目 14：节点保持稳"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "定，消息来自本次工具事件。\n- 验证条目"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": " 15：节点保持稳定，消息来自本次工具事"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "件。\n- 验证条目 16：节点保持稳定，"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "消息来自本次工具事件。\n- 验证条目 1"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "7：节点保持稳定，消息来自本次工具事件。"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "\n- 验证条目 18：节点保持稳定，消息"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "来自本次工具事件。\n- 验证条目 19："
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "节点保持稳定，消息来自本次工具事件。\n-"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": " 验证条目 20：节点保持稳定，消息来自"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "本次工具事件。\n- 验证条目 21：节点"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "保持稳定，消息来自本次工具事件。\n- 验"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "证条目 22：节点保持稳定，消息来自本次"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "工具事件。\n- 验证条目 23：节点保持"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "稳定，消息来自本次工具事件。\n- 验证条"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "目 24：节点保持稳定，消息来自本次工具"
+      },
+      {
+        "type": "text-delta",
+        "index": 0,
+        "text": "事件。"
+      },
+      {
+        "type": "block-end",
+        "index": 0,
+        "block": {
+          "type": "text",
+          "text": "回放完成。命令输出为 `compact replay output`。\n\n- 验证条目 1：节点保持稳定，消息来自本次工具事件。\n- 验证条目 2：节点保持稳定，消息来自本次工具事件。\n- 验证条目 3：节点保持稳定，消息来自本次工具事件。\n- 验证条目 4：节点保持稳定，消息来自本次工具事件。\n- 验证条目 5：节点保持稳定，消息来自本次工具事件。\n- 验证条目 6：节点保持稳定，消息来自本次工具事件。\n- 验证条目 7：节点保持稳定，消息来自本次工具事件。\n- 验证条目 8：节点保持稳定，消息来自本次工具事件。\n- 验证条目 9：节点保持稳定，消息来自本次工具事件。\n- 验证条目 10：节点保持稳定，消息来自本次工具事件。\n- 验证条目 11：节点保持稳定，消息来自本次工具事件。\n- 验证条目 12：节点保持稳定，消息来自本次工具事件。\n- 验证条目 13：节点保持稳定，消息来自本次工具事件。\n- 验证条目 14：节点保持稳定，消息来自本次工具事件。\n- 验证条目 15：节点保持稳定，消息来自本次工具事件。\n- 验证条目 16：节点保持稳定，消息来自本次工具事件。\n- 验证条目 17：节点保持稳定，消息来自本次工具事件。\n- 验证条目 18：节点保持稳定，消息来自本次工具事件。\n- 验证条目 19：节点保持稳定，消息来自本次工具事件。\n- 验证条目 20：节点保持稳定，消息来自本次工具事件。\n- 验证条目 21：节点保持稳定，消息来自本次工具事件。\n- 验证条目 22：节点保持稳定，消息来自本次工具事件。\n- 验证条目 23：节点保持稳定，消息来自本次工具事件。\n- 验证条目 24：节点保持稳定，消息来自本次工具事件。"
+        }
+      },
+      {
+        "type": "finish",
+        "reason": {
+          "kind": "stop"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "hang"
+  }
+]

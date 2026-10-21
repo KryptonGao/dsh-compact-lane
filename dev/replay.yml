@@ -1,0 +1,29 @@
+# Isolated keyless verification only; never include this in the normal overlay.
+- id: llm-deepseek
+  disabled: true
+- id: llm-deepseek-account
+  disabled: true
+- id: llm-pi-ai
+  disabled: true
+- id: session-title-llm
+  disabled: true
+- id: agent-default-model
+  config:
+    provider: compact-replay
+    model: recording
+- insert:
+    - id: compact-lane
+      name: '../lib/index.js'
+    - id: compact-keyless-replay
+      name: '../node_modules/@deepseek-ai/dsh-llm-replay/lib/index.js'
+      config:
+        file: './dev/replay.session.v4.jsonl'
+        overrideFile: './dev/replay.override.json'
+        paceMs: 250
+        providers:
+          - id: compact-replay
+            name: 本地无密钥回放
+            models:
+              - id: recording
+                name: 紧凑界面测试录制
+                contextWindow: 128000

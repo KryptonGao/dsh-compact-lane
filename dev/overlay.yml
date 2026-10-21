@@ -1,0 +1,3 @@
+- insert:
+    - id: compact-lane
+      name: '../lib/index.js'

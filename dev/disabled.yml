@@ -1,0 +1,3 @@
+# Apply after overlay.yml or replay.yml to restore the host's original chat.
+- id: compact-lane
+  disabled: true
