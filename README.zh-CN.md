@@ -40,7 +40,7 @@ DSH Compact Lane 是一个独立的 [Cordis 插件](https://github.com/deepseek-
 
 ## 快速开始
 
-需要 **Node.js `^22.19.0` 或 `>=24.0.0`**、**pnpm**，以及已安装的 **DeepSeek Harness `0.2.1-rc.2`**，并确保 `dsh` 在 `PATH` 中可用。React 18 与 Cordis 4 由宿主提供。宿主安装方式见 [DSH 快速开始](https://github.com/deepseek-ai/deepseek-harness#quick-start)；本插件通过本地构建加载，尚未发布到 npm。
+需要 **Node.js `^22.19.0` 或 `>=24.0.0`**、**pnpm**，以及已安装的 **DeepSeek Harness `0.2.1-rc.2`**，并确保 `dsh` 在 `PATH` 中可用。React 18 与 Cordis 4 由宿主提供。宿主安装方式见 [DSH 快速开始](https://github.com/deepseek-ai/deepseek-harness#quick-start)；本快速开始通过本地构建加载插件；该包也已发布到 npm，包名为 `dsh-compact-lane`。
 
 ```sh
 git clone https://github.com/KryptonGao/dsh-compact-lane.git

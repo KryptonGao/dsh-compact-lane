@@ -40,7 +40,7 @@ DSH Compact Lane is a standalone [Cordis](https://github.com/deepseek-ai/deepsee
 
 ## Quick start
 
-You need **Node.js `^22.19.0` or `>=24.0.0`**, **pnpm**, and an installed **DeepSeek Harness `0.2.1-rc.2`** with `dsh` on your `PATH`. The plugin uses React 18 and Cordis 4 supplied by the host. See the [DSH installation guide](https://github.com/deepseek-ai/deepseek-harness#quick-start) for host setup; this plugin is loaded from a local build and is not published to npm.
+You need **Node.js `^22.19.0` or `>=24.0.0`**, **pnpm**, and an installed **DeepSeek Harness `0.2.1-rc.2`** with `dsh` on your `PATH`. The plugin uses React 18 and Cordis 4 supplied by the host. See the [DSH installation guide](https://github.com/deepseek-ai/deepseek-harness#quick-start) for host setup; this quick start loads the plugin from a local build. The package is also published on npm as `dsh-compact-lane`.
 
 ```sh
 git clone https://github.com/KryptonGao/dsh-compact-lane.git
