@@ -27,8 +27,16 @@ import { Turn, type TurnActions } from "./ui/turn";
 import velaCss from "./styles/vela-compact.css";
 import hostCss from "./styles/host.css";
 import { chatOverride, installChatTabDedup } from "./integration";
+import { FoldModeContext } from "./ui/fold";
+import {
+  SECTION_LABEL,
+  SettingsSection,
+  type CompactSettingsForm,
+} from "./ui/settings";
+import { NAMESPACE, normalizeFoldMode, type FoldMode } from "./settings";
 
 interface Injected {
+  hooks: { foldMode: ObservableSnapshot<FoldMode> };
   keyedHooks: { turn: (key: string) => ObservableSnapshot<TurnModel> };
   openFile(path: string): void;
   openAgent(id: string, mode: string): void;
@@ -52,6 +60,7 @@ function TurnSeat({
 }
 function CompactView({
   sessionId,
+  useFoldMode,
   useChat,
   useTurn,
   useSession,
@@ -63,6 +72,7 @@ function CompactView({
   loadOlder,
   loadImage,
 }: ViewProps) {
+  const foldMode = useFoldMode((m) => m);
   const order = useChat((s) => s.timeline.turnOrder);
   const more = useSession((s) => s.hasMore),
     loading = useSession((s) => s.loadingOlder),
@@ -103,47 +113,49 @@ function CompactView({
         window.open(url, "_blank", "noopener,noreferrer");
       }}
     >
-      <Lane
-        identity={sessionId}
-        page={
-          more
-            ? {
-                loading,
-                load: async () => {
-                  setError("");
-                  try {
-                    await loadOlder();
-                  } catch (e) {
-                    setError(String(e));
-                  }
-                },
-              }
-            : undefined
-        }
-        header={
-          <>
-            {(error || openError) && (
-              <div role="alert" className="lane-action-error">
-                {error || String(openError)}
-              </div>
-            )}
-            {!order.length && (
-              <div className="lane-notice">
-                开始对话后，工具调用会显示在这里。
-              </div>
-            )}
-          </>
-        }
-      >
-        {order.map((turn) => (
-          <TurnSeat
-            key={turn}
-            turn={turn}
-            useTurn={useTurn}
-            actions={actions}
-          />
-        ))}
-      </Lane>
+      <FoldModeContext.Provider value={foldMode}>
+        <Lane
+          identity={sessionId}
+          page={
+            more
+              ? {
+                  loading,
+                  load: async () => {
+                    setError("");
+                    try {
+                      await loadOlder();
+                    } catch (e) {
+                      setError(String(e));
+                    }
+                  },
+                }
+              : undefined
+          }
+          header={
+            <>
+              {(error || openError) && (
+                <div role="alert" className="lane-action-error">
+                  {error || String(openError)}
+                </div>
+              )}
+              {!order.length && (
+                <div className="lane-notice">
+                  开始对话后，工具调用会显示在这里。
+                </div>
+              )}
+            </>
+          }
+        >
+          {order.map((turn) => (
+            <TurnSeat
+              key={turn}
+              turn={turn}
+              useTurn={useTurn}
+              actions={actions}
+            />
+          ))}
+        </Lane>
+      </FoldModeContext.Provider>
     </MarkdownDelegateProvider>
   );
 }
@@ -164,8 +176,47 @@ export function installStyles(ctx: Context) {
     return () => style.remove();
   });
 }
+/** Accepted fold mode; an unserved or unloaded namespace keeps the folded default. */
+export function foldModeOf(
+  form: Pick<CompactSettingsForm, "getSnapshot" | "subscribe">,
+): ObservableSnapshot<FoldMode> {
+  const read = () => normalizeFoldMode(form.getSnapshot().value?.foldMode);
+  return {
+    getSnapshot: read,
+    subscribe: (listener) => {
+      let previous = read();
+      return form.subscribe(() => {
+        const next = read();
+        if (next === previous) return;
+        previous = next;
+        listener();
+      });
+    },
+  };
+}
 export function apply(ctx: Context): void {
   installStyles(ctx);
+  const form = ctx.configForms.get<{ foldMode?: FoldMode }>(NAMESPACE);
+  const foldMode = foldModeOf(form);
+  ctx.effect(() =>
+    ctx.configForms.whileServed([NAMESPACE], () =>
+      ctx.slots.inject("settings.section", () =>
+        ctx.slots.register(
+          {
+            name: "settings.section",
+            id: "compact-lane",
+            order: 30,
+            label: SECTION_LABEL,
+            inject: () => ({
+              hooks: { form },
+              setFoldMode: (mode: FoldMode) => form.set("foldMode", mode),
+            }),
+          },
+          SettingsSection,
+        ),
+      ),
+    ),
+  );
   ctx.effect(() =>
     installChatTabDedup(ctx.slots, ctx.configForms.developerTools.enabled),
   );
@@ -197,6 +248,7 @@ export function apply(ctx: Context): void {
           };
           const sources = new Map<string, ObservableSnapshot<TurnModel>>();
           return {
+            hooks: { foldMode },
             keyedHooks: {
               turn: (key) => {
                 let s = sources.get(key);

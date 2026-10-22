@@ -95,3 +95,26 @@
     opacity: 0.65;
   }
 }
+/* Settings page (rendered by the DSH settings shell, outside the lane root). */
+.compact-lane-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+}
+.compact-lane-settings-title {
+  font-size: 14px;
+  line-height: 20px;
+}
+.compact-lane-settings-description {
+  margin-top: 4px;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 12px;
+  line-height: 18px;
+}
+.compact-lane-settings-error {
+  margin-top: 4px;
+  color: var(--dsw-alias-state-error-primary);
+  font-size: 12px;
+}

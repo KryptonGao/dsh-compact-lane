@@ -21,6 +21,7 @@ import {
   Prose,
   Status,
 } from "./primitives";
+import { useApplyFoldMode, useUnfolded } from "./fold";
 export interface ToolActions {
   openFile(path: string): void;
   openAgent(id: string): void;
@@ -276,8 +277,9 @@ function ToolGroup({
   tools: ToolTrace[];
   actions: ToolActions;
 }) {
-  const [open, setOpen] = useState(false),
+  const [open, setOpen] = useState(useUnfolded()),
     parts = compactSummaryParts(tools);
+  useApplyFoldMode(setOpen);
   // Removing no-enter later would restart CSS animation on this existing node.
   const initiallySingle = useRef(tools.length === 1);
   const uniform = parts.length === 1 ? parts[0].kind : null;

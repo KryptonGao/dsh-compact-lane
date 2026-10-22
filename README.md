@@ -33,6 +33,7 @@ DSH Compact Lane is a standalone [Cordis](https://github.com/deepseek-ai/deepsee
 ## What changes
 
 - **A quieter conversation.** Reasoning and tool activity fold into a process row, with tool groups organized by assistant message. Expand them to inspect commands, results, checklists, and subagent entries.
+- **Fold or don't.** **Settings → 紧凑对话** switches tool-call display between **折叠** (the default: the process row and tool groups start closed) and **不折叠** (they start open and can still be closed by hand). A change applies to the open conversation immediately.
 - **File changes with evidence.** Diff cards and file totals come from successful tool results. Multiple fragments for one file share a card; missing line numbers stay blank.
 - **Streaming that follows your reading.** New output follows the bottom until you scroll up. Jump back to the latest output or load earlier turns while preserving your reading position.
 - **Familiar host controls.** Keep DSH's original composer, Markdown renderer, code-block controls, file preview, reply copying, and conversation branching.
@@ -62,6 +63,8 @@ dsh web --patch "$PWD/dev/overlay.yml" --no-open
 ```
 
 This uses your current DSH environment's configuration and sessions. The overlay loads `../lib/index.js` relative to `dev/overlay.yml`; keep the checkout and build output in place. The existing **Chat / 对话** view becomes compact, without an extra compact-view tab.
+
+The **紧凑对话** settings page saves to your DSH profile, which DSH only allows for plugins installed into it (`dsh plugin --profile web add <path-to-this-checkout>`). A plugin loaded through `--patch` stays on the default **折叠** and the page reports that the setting cannot be saved.
 
 <details>
 <summary>Disable the plugin and restore the host view</summary>

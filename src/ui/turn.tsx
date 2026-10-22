@@ -7,6 +7,7 @@ import {
   type TurnModel,
 } from "../adapter/model";
 import { Collapse, Copy, Fade, Icon, Loader, Prose } from "./primitives";
+import { useApplyFoldMode, useUnfolded } from "./fold";
 import { ToolList, type ToolActions } from "./tools";
 
 function Thinking({ message: m }: { message: AssistantMessage }) {
@@ -242,14 +243,19 @@ export const Turn = memo(function Turn({
   actions: TurnActions;
   initialOpen?: boolean;
 }) {
-  const [expanded, setExpanded] = useState(model.running || initialOpen),
+  const unfolded = useUnfolded();
+  const [expanded, setExpanded] = useState(
+      model.running || initialOpen || unfolded,
+    ),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
+  useApplyFoldMode(setExpanded);
   const wasRunning = useRef(model.running);
   useEffect(() => {
-    if (wasRunning.current !== model.running) setExpanded(model.running);
+    if (wasRunning.current !== model.running)
+      setExpanded(model.running || unfolded);
     wasRunning.current = model.running;
-  }, [model.running]);
+  }, [model.running, unfolded]);
   const assistants = model.items.filter(
     (i): i is Extract<LaneItem, { type: "assistant" }> =>
       i.type === "assistant",
