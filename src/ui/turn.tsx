@@ -25,6 +25,9 @@ function Thinking({ message: m }: { message: AssistantMessage }) {
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
+          <span className="thinking-icon" aria-hidden="true">
+            <Icon name="thinking" />
+          </span>
           <span>{active ? "思考中" : "思考"}</span>
           <Icon name="chevron" className="time-spent-trigger-arrow" size={12} />
           {active && <Loader />}

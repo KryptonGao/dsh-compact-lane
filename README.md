@@ -34,6 +34,7 @@ DSH Compact Lane is a standalone [Cordis](https://github.com/deepseek-ai/deepsee
 
 - **A quieter conversation.** Reasoning and tool activity fold into a process row, with tool groups organized by assistant message. Expand them to inspect commands, results, checklists, and subagent entries.
 - **Fold or don't.** **Settings → 紧凑对话** switches tool-call display between **折叠** (the default: the process row and tool groups start closed) and **不折叠** (they start open and can still be closed by hand). A change applies to the open conversation immediately.
+- **Colored tool icons.** Each kind of tool call gets its own icon color, and the **思考** title gets a lightbulb. **Settings → 紧凑对话 → 工具图标配色** turns this off, which returns every icon to a uniform gray. It is on by default and also applies immediately.
 - **File changes with evidence.** Diff cards and file totals come from successful tool results. Multiple fragments for one file share a card; missing line numbers stay blank.
 - **Streaming that follows your reading.** New output follows the bottom until you scroll up. Jump back to the latest output or load earlier turns while preserving your reading position.
 - **Familiar host controls.** Keep DSH's original composer, Markdown renderer, code-block controls, file preview, reply copying, and conversation branching.
@@ -143,7 +144,7 @@ node scripts/extract-styles.mjs /path/to/compact-chat-ui.html
 pnpm build
 ```
 
-The reference must contain the `vela-extracted` and `demo-chrome` style blocks. The extractor reads that file and rewrites `src/styles/vela-compact.css`; it does not edit the reference. The original extraction retained the order and values of 1,654 CSS declarations, with separately scoped dot-loader rules.
+The reference must contain the `vela-extracted` and `demo-chrome` style blocks. The extractor reads that file and rewrites `src/styles/vela-compact.css`; it does not edit the reference. Selectors of the form `:root[attr] …` (the icon-color switch) are rewritten to `[data-dsh-compact-lane][attr] …`, so the attribute sits on the plugin root. The original extraction retained the order and values of 1,654 CSS declarations, with separately scoped dot-loader rules.
 
 </details>
 

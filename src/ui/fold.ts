@@ -17,3 +17,5 @@ export function useApplyFoldMode(setOpen: (open: boolean) => void): void {
     setOpen(unfolded);
   }, [unfolded, setOpen]);
 }
+
+export const IconColorContext = createContext<boolean>(true);

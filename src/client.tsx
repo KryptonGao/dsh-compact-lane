@@ -27,16 +27,25 @@ import { Turn, type TurnActions } from "./ui/turn";
 import velaCss from "./styles/vela-compact.css";
 import hostCss from "./styles/host.css";
 import { chatOverride, installChatTabDedup } from "./integration";
-import { FoldModeContext } from "./ui/fold";
+import { FoldModeContext, IconColorContext } from "./ui/fold";
 import {
   SECTION_LABEL,
   SettingsSection,
+  type CompactSettings,
   type CompactSettingsForm,
 } from "./ui/settings";
-import { NAMESPACE, normalizeFoldMode, type FoldMode } from "./settings";
+import {
+  NAMESPACE,
+  normalizeFoldMode,
+  normalizeIconColor,
+  type FoldMode,
+} from "./settings";
 
 interface Injected {
-  hooks: { foldMode: ObservableSnapshot<FoldMode> };
+  hooks: {
+    foldMode: ObservableSnapshot<FoldMode>;
+    iconColor: ObservableSnapshot<boolean>;
+  };
   keyedHooks: { turn: (key: string) => ObservableSnapshot<TurnModel> };
   openFile(path: string): void;
   openAgent(id: string, mode: string): void;
@@ -61,6 +70,7 @@ function TurnSeat({
 function CompactView({
   sessionId,
   useFoldMode,
+  useIconColor,
   useChat,
   useTurn,
   useSession,
@@ -73,6 +83,7 @@ function CompactView({
   loadImage,
 }: ViewProps) {
   const foldMode = useFoldMode((m) => m);
+  const iconColor = useIconColor((v) => v);
   const order = useChat((s) => s.timeline.turnOrder);
   const more = useSession((s) => s.hasMore),
     loading = useSession((s) => s.loadingOlder),
@@ -114,47 +125,49 @@ function CompactView({
       }}
     >
       <FoldModeContext.Provider value={foldMode}>
-        <Lane
-          identity={sessionId}
-          page={
-            more
-              ? {
-                  loading,
-                  load: async () => {
-                    setError("");
-                    try {
-                      await loadOlder();
-                    } catch (e) {
-                      setError(String(e));
-                    }
-                  },
-                }
-              : undefined
-          }
-          header={
-            <>
-              {(error || openError) && (
-                <div role="alert" className="lane-action-error">
-                  {error || String(openError)}
-                </div>
-              )}
-              {!order.length && (
-                <div className="lane-notice">
-                  开始对话后，工具调用会显示在这里。
-                </div>
-              )}
-            </>
-          }
-        >
-          {order.map((turn) => (
-            <TurnSeat
-              key={turn}
-              turn={turn}
-              useTurn={useTurn}
-              actions={actions}
-            />
-          ))}
-        </Lane>
+        <IconColorContext.Provider value={iconColor}>
+          <Lane
+            identity={sessionId}
+            page={
+              more
+                ? {
+                    loading,
+                    load: async () => {
+                      setError("");
+                      try {
+                        await loadOlder();
+                      } catch (e) {
+                        setError(String(e));
+                      }
+                    },
+                  }
+                : undefined
+            }
+            header={
+              <>
+                {(error || openError) && (
+                  <div role="alert" className="lane-action-error">
+                    {error || String(openError)}
+                  </div>
+                )}
+                {!order.length && (
+                  <div className="lane-notice">
+                    开始对话后，工具调用会显示在这里。
+                  </div>
+                )}
+              </>
+            }
+          >
+            {order.map((turn) => (
+              <TurnSeat
+                key={turn}
+                turn={turn}
+                useTurn={useTurn}
+                actions={actions}
+              />
+            ))}
+          </Lane>
+        </IconColorContext.Provider>
       </FoldModeContext.Provider>
     </MarkdownDelegateProvider>
   );
@@ -176,11 +189,9 @@ export function installStyles(ctx: Context) {
     return () => style.remove();
   });
 }
-/** Accepted fold mode; an unserved or unloaded namespace keeps the folded default. */
-export function foldModeOf(
-  form: Pick<CompactSettingsForm, "getSnapshot" | "subscribe">,
-): ObservableSnapshot<FoldMode> {
-  const read = () => normalizeFoldMode(form.getSnapshot().value?.foldMode);
+type FormSource = Pick<CompactSettingsForm, "getSnapshot" | "subscribe">;
+/** Normalized view of one form field; listeners fire only when the normalized value changes. */
+function fieldOf<T>(form: FormSource, read: () => T): ObservableSnapshot<T> {
   return {
     getSnapshot: read,
     subscribe: (listener) => {
@@ -194,10 +205,23 @@ export function foldModeOf(
     },
   };
 }
+/** Accepted fold mode; an unserved or unloaded namespace keeps the folded default. */
+export function foldModeOf(form: FormSource): ObservableSnapshot<FoldMode> {
+  return fieldOf(form, () =>
+    normalizeFoldMode(form.getSnapshot().value?.foldMode),
+  );
+}
+/** Accepted icon color switch; an unserved or unloaded namespace keeps icons colored. */
+export function iconColorOf(form: FormSource): ObservableSnapshot<boolean> {
+  return fieldOf(form, () =>
+    normalizeIconColor(form.getSnapshot().value?.iconColor),
+  );
+}
 export function apply(ctx: Context): void {
   installStyles(ctx);
-  const form = ctx.configForms.get<{ foldMode?: FoldMode }>(NAMESPACE);
+  const form = ctx.configForms.get<CompactSettings>(NAMESPACE);
   const foldMode = foldModeOf(form);
+  const iconColor = iconColorOf(form);
   ctx.effect(() =>
     ctx.configForms.whileServed([NAMESPACE], () =>
       ctx.slots.inject("settings.section", () =>
@@ -210,6 +234,7 @@ export function apply(ctx: Context): void {
             inject: () => ({
               hooks: { form },
               setFoldMode: (mode: FoldMode) => form.set("foldMode", mode),
+              setIconColor: (on: boolean) => form.set("iconColor", on),
             }),
           },
           SettingsSection,
@@ -248,7 +273,7 @@ export function apply(ctx: Context): void {
           };
           const sources = new Map<string, ObservableSnapshot<TurnModel>>();
           return {
-            hooks: { foldMode },
+            hooks: { foldMode, iconColor },
             keyedHooks: {
               turn: (key) => {
                 let s = sources.get(key);

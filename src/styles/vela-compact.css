@@ -1114,8 +1114,11 @@
   white-space: nowrap;
 }
 [data-dsh-compact-lane] .tool-duration {
-  width: 7ch;
+  min-width: 7ch;
   text-align: right;
+}
+[data-dsh-compact-lane] .tool-duration.is-failed {
+  color: var(--danger);
 }
 [data-dsh-compact-lane] .tool-compact-steps {
   display: inline-flex;
@@ -1382,6 +1385,191 @@
   background: var(--bg-card-surface);
 }
 [data-dsh-compact-lane] .tool-compact-out { margin: 0 8px 4px; }
+
+/* ---------- Browser REPL 调用 ---------- */
+[data-dsh-compact-lane] .browser-call { min-width: 0; margin: 2px 0; }
+[data-dsh-compact-lane] .browser-call-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  padding: 3px 0;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  text-align: left;
+  cursor: pointer;
+}
+[data-dsh-compact-lane] .browser-call-head:hover { color: var(--text-primary); }
+[data-dsh-compact-lane] .browser-call-head:focus-visible { outline: 2px solid var(--accent-blue); outline-offset: -2px; }
+[data-dsh-compact-lane] .browser-call-badge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--accent-blue) 13%, transparent);
+  color: var(--accent-blue);
+  transition: background-color 140ms ease;
+}
+[data-dsh-compact-lane] .browser-call.is-running .browser-call-badge { animation: browser-call-pulse 1.4s ease-in-out infinite; }
+[data-dsh-compact-lane] .browser-call.is-error .browser-call-badge {
+  background: color-mix(in srgb, var(--danger) 13%, transparent);
+  color: var(--danger);
+}
+/* 紧凑模式下 Browser REPL 的图标不要底色,尺寸与其他紧凑图标(16px)对齐。 */
+[data-dsh-compact-lane] .browser-call.is-compact .browser-call-badge,[data-dsh-compact-lane] .browser-call.is-compact.is-error .browser-call-badge {
+  width: 16px;
+  height: 16px;
+  border-radius: 0;
+  background: transparent;
+}
+[data-dsh-compact-lane] .browser-call-steps {
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+}
+[data-dsh-compact-lane] .browser-call-step-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  color: var(--text-muted);
+}
+[data-dsh-compact-lane] .browser-call-step {
+  min-width: 0;
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--bg-surface-subtle);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+[data-dsh-compact-lane] .browser-call-shots {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--success-tint);
+  color: var(--success);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+[data-dsh-compact-lane] .browser-call.open > .browser-call-head .browser-call-chevron { transform: rotate(90deg); }
+[data-dsh-compact-lane] .browser-call:not(.is-compact) {
+  border-radius: 10px;
+  background: var(--bg-surface-subtle);
+  padding: 2px 10px;
+}
+[data-dsh-compact-lane] .browser-call:not(.is-compact) .browser-call-step { background: var(--bg-card-surface); }
+[data-dsh-compact-lane] .browser-call.open > .tool-collapse { grid-template-rows: 1fr; }
+[data-dsh-compact-lane] .browser-call-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0 8px 28px;
+}
+[data-dsh-compact-lane] .browser-call:not(.is-compact) .browser-call-body { padding-left: 28px; }
+[data-dsh-compact-lane] .browser-call-code {
+  position: relative;
+  margin: 0;
+  padding: 8px 10px 8px calc(10px + 1.2em);
+  border-radius: 8px;
+  background: var(--term-bg);
+  color: var(--term-fg);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+[data-dsh-compact-lane] .browser-call-prompt {
+  position: absolute;
+  left: 10px;
+  color: var(--accent-blue);
+  user-select: none;
+}
+[data-dsh-compact-lane] .browser-call-output {
+  padding: 0 2px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+[data-dsh-compact-lane] .browser-call-output.failed,[data-dsh-compact-lane] .browser-call-output.failed .tool-markdown { color: var(--danger); }
+[data-dsh-compact-lane] .browser-call-text { margin: 0; }
+[data-dsh-compact-lane] .browser-call-wait { padding: 0 2px; font-size: 13px; color: var(--text-muted); }
+[data-dsh-compact-lane] .browser-call-frames { display: flex; flex-wrap: wrap; gap: 10px; }
+[data-dsh-compact-lane] .browser-call-frame {
+  margin: 0;
+  width: 240px;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--bg-card-surface);
+  box-shadow: 0 0 0 1px var(--border-subtle), 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: width var(--transition-smooth);
+}
+[data-dsh-compact-lane] .browser-call-frame.zoomed { width: 100%; }
+[data-dsh-compact-lane] .browser-call-chrome {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 0 8px;
+  background: var(--bg-surface-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+[data-dsh-compact-lane] .browser-call-chrome > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border-subtle);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
+}
+[data-dsh-compact-lane] .browser-call-chrome > em {
+  flex: 1;
+  min-width: 0;
+  margin-left: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-style: normal;
+  color: var(--text-muted);
+}
+[data-dsh-compact-lane] .browser-call-shot {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+}
+[data-dsh-compact-lane] .browser-call-frame.zoomed .browser-call-shot { cursor: zoom-out; }
+[data-dsh-compact-lane] .browser-call-shot img { display: block; width: 100%; height: auto; }
+@keyframes browser-call-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-dsh-compact-lane] .browser-call.is-running .browser-call-badge { animation: none; }
+}
 [data-dsh-compact-lane] .tool-card-list.is-compact .tool-card {
   overflow: visible;
   border-radius: 0;
@@ -1408,6 +1596,55 @@
 [data-dsh-compact-lane] .tool-card-list.is-compact .tool-card-name { font-size: 14px; font-weight: 500; }
 [data-dsh-compact-lane] .tool-card-list.is-compact .tool-card-dir { font-size: 13px; }
 [data-dsh-compact-lane] .tool-card-list.is-compact .tool-card-body { padding: 2px 0 8px; }
+
+/* 紧凑模式的工具图标配色:设置 → 对话显示 → 工具图标配色,关闭时保持统一灰色。
+   Browser REPL 的图标有自己的蓝色底,不在这里处理。 */
+[data-dsh-compact-lane],[data-dsh-compact-lane] {
+  --tool-icon-bash: #7c5cd6;
+  --tool-icon-read: #0f8a8a;
+  --tool-icon-edit: #c2710c;
+  --tool-icon-write: #1f9d55;
+  --tool-icon-group: #5b6fd6;
+  --tool-icon-mcp: #d6457a;
+  --tool-icon-agent: #b43fc7;
+  --tool-icon-ask: #0284c7;
+  --tool-icon-other: #e0603c;
+  --tool-icon-think: #84a10d;
+}
+[data-dsh-compact-lane] [data-scheme="dark"] {
+  --tool-icon-bash: #b9a4f5;
+  --tool-icon-read: #5fd0cc;
+  --tool-icon-edit: #fbbf6a;
+  --tool-icon-write: #6ee7a0;
+  --tool-icon-group: #a5b0f5;
+  --tool-icon-mcp: #f59ab9;
+  --tool-icon-agent: #e19af0;
+  --tool-icon-ask: #7dd3fc;
+  --tool-icon-other: #fb9b7e;
+  --tool-icon-think: #c3e35c;
+}
+[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-compact-icon,[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-card-list.is-compact .tool-card-icon,[data-dsh-compact-lane][data-tool-icon-color="true"] .question-compact-icon {
+  color: var(--tool-icon-other);
+}
+[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-kind-bash .tool-compact-icon,[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-card-list.is-compact .tool-kind-bash .tool-card-icon { color: var(--tool-icon-bash); }
+[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-kind-read .tool-compact-icon,[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-card-list.is-compact .tool-kind-read .tool-card-icon { color: var(--tool-icon-read); }
+[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-kind-edit .tool-compact-icon,[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-card-list.is-compact .tool-kind-edit .tool-card-icon { color: var(--tool-icon-edit); }
+[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-kind-write .tool-compact-icon,[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-card-list.is-compact .tool-kind-write .tool-card-icon { color: var(--tool-icon-write); }
+[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-compact-group.tool-kind-other > .tool-compact-summary .tool-compact-icon { color: var(--tool-icon-group); }
+[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-card-list.is-compact .tool-card.is-mcp .tool-card-icon { color: var(--tool-icon-mcp); }
+[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-card-list.is-compact .tool-card.is-task .tool-card-icon,[data-dsh-compact-lane][data-tool-icon-color="true"] .tool-compact-item.agent-compact .tool-compact-icon { color: var(--tool-icon-agent); }
+[data-dsh-compact-lane][data-tool-icon-color="true"] .question-compact-icon { color: var(--tool-icon-ask); }
+[data-dsh-compact-lane] .thinking-icon { display: none; }
+[data-dsh-compact-lane] .main-chat-view[data-tool-display="compact"] .thinking-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+[data-dsh-compact-lane][data-tool-icon-color="true"] .thinking-icon { color: var(--tool-icon-think); }
+/* 关闭配色时,紧凑模式的 Browser REPL 图标也回到灰色(失败状态由右侧的 ✕ 标出)。 */
+[data-dsh-compact-lane][data-tool-icon-color="false"] .browser-call.is-compact .browser-call-badge { color: var(--text-muted); }
 [data-dsh-compact-lane] .tool-collapse {
   display: grid;
   grid-template-rows: 0fr;
@@ -1985,7 +2222,6 @@
   flex-shrink: 0;
 }
 [data-dsh-compact-lane] .send-action-blue-btn:hover:not(:disabled) { background: var(--accent-blue-hover); }
-[data-dsh-compact-lane] .send-action-blue-btn.send-icon-arrow-up > svg { transform: translateX(1px); }
 [data-dsh-compact-lane] .send-action-blue-btn:disabled { opacity: 0.45; cursor: default; box-shadow: none; }
 [data-dsh-compact-lane] .send-action-blue-btn.stop { background: var(--text-primary); box-shadow: none; }
 [data-dsh-compact-lane] .stop-square {

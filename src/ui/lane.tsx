@@ -1,5 +1,6 @@
-import { type ReactNode } from "react";
+import { useContext, type ReactNode } from "react";
 import { Icon } from "./primitives";
+import { IconColorContext } from "./fold";
 import { useLaneScroll } from "./scroll";
 export function Lane({
   identity,
@@ -14,10 +15,12 @@ export function Lane({
 }) {
   const { viewport, surface, jump, scrolling, latest, preserve } =
     useLaneScroll(identity);
+  const iconColor = useContext(IconColorContext);
   return (
     <div
       data-dsh-compact-lane=""
       data-scheme="light"
+      data-tool-icon-color={iconColor ? "true" : "false"}
       data-conversation-composer-overlay=""
     >
       <div className="main-chat-view" data-tool-display="compact">

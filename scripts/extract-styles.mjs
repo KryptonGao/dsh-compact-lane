@@ -22,11 +22,15 @@ ast.walkRules((rule) => {
       if (s === ":root" || s === '[data-scheme="light"]') {
         selector.replaceWith(selectorParser().astSync(root).first);
       } else {
-        const scoped = s.startsWith('[data-scheme="light"] ')
-          ? s.replace('[data-scheme="light"]', root + '[data-scheme="light"]')
-          : /^(html|body)(\s|$)/.test(s)
-            ? s.replace(/^(html|body)/, root)
-            : `${root} ${s}`;
+        // `:root[attr] …` switches live on the document root in Vela; here they sit on the plugin root itself.
+        const rootAttrs = s.match(/^:root((?:\[[^\]]+\])+)(\s[\s\S]*)?$/);
+        const scoped = rootAttrs
+          ? `${root}${rootAttrs[1]}${rootAttrs[2] ?? ""}`
+          : s.startsWith('[data-scheme="light"] ')
+            ? s.replace('[data-scheme="light"]', root + '[data-scheme="light"]')
+            : /^(html|body)(\s|$)/.test(s)
+              ? s.replace(/^(html|body)/, root)
+              : `${root} ${s}`;
         selector.replaceWith(selectorParser().astSync(scoped).first);
       }
     });

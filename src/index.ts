@@ -7,6 +7,8 @@ import type { FoldMode } from "./settings";
 export interface Config {
   /** Whether the process row and tool groups start open. */
   foldMode: Volatile<FoldMode>;
+  /** Whether tool and thinking icons are colored by kind; off keeps them uniformly gray. */
+  iconColor: Volatile<boolean>;
 }
 
 export const Config = z.object({
@@ -14,6 +16,7 @@ export const Config = z.object({
     .union([z.const("folded"), z.const("unfolded")])
     .default("folded")
     .volatile(),
+  iconColor: z.boolean().default(true).volatile(),
 });
 
 /** The plugin ships its own settings page, so the generated form stays off. */
